@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
-use Illuminate\Http\Request;
 use JWTAuth;
 
 class ProductController extends Controller
@@ -108,4 +107,30 @@ class ProductController extends Controller
         	], 500);
     	}
 	}
+
+    public function order($id)
+    {
+        $product = $this->user->products()->find($id);
+
+        if (!$product) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product with id ' . $id . ' cannot be found'
+            ], 400);
+        }
+
+        $order_product = $product->quantity - 1;
+        $updated = $product->fill($request->all())->save();
+
+        if ($order_product) {
+            return response()->json([
+                'success' => true
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Sorry, product could not be ordered'
+            ], 500);
+        }
+    }
 }

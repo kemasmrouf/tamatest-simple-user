@@ -59,9 +59,11 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`),
   KEY `products_user_id_foreign` (`user_id`),
   CONSTRAINT `products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 /*Data for the table `products` */
+
+insert  into `products`(`id`,`user_id`,`name`,`price`,`quantity`,`created_at`,`updated_at`) values (1,1,'Gold',100000,1,'2018-09-13 14:49:19','2018-09-13 14:49:19');
 
 /*Table structure for table `users` */
 
