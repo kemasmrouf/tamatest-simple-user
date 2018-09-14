@@ -34,6 +34,10 @@ This is a simple REST Web Service which allow:
 
   Change the database configuration in .env file.
 
+#### Run the project for testing
+
+  * Use command `php artisan serve`
+
 ### Routes
 
   * `/register` - post method - This method is used for register the user. e.g.: `http://localhost:8000/api/register` with value name, email, and password
